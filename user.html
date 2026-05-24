@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ 
+    dark: localStorage.getItem('dark') === 'true',
+    dir: localStorage.getItem('dir') || 'ltr',
+    sidebarOpen: window.innerWidth > 1024, 
+    activeTab: 'dashboard',
+    toggleDark() { this.dark = !this.dark; localStorage.setItem('dark', this.dark); },
+    toggleDir() { this.dir = this.dir === 'ltr' ? 'rtl' : 'ltr'; localStorage.setItem('dir', this.dir); }
+}" :class="dark ? 'dark' : ''" :dir="dir">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236366f1' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>">
+    <title>TaskVibe Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 500: '#6366f1' } } } } }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+<div class="flex h-screen overflow-hidden">
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed lg:static inset-y-0 left-0 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transition-transform duration-300 z-50 flex flex-col lg:translate-x-0 shadow-xl lg:shadow-none">
+        <div class="p-6 font-bold text-brand-500 text-xl flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span>TaskVibe</span>
+            </a>
+            <button @click="sidebarOpen = false" class="lg:hidden p-2">✕</button>
+        </div>
+
+        <nav class="flex-1 px-4 space-y-2">
+            <button @click="activeTab = 'dashboard'; if(window.innerWidth < 1024) sidebarOpen = false" :class="activeTab === 'dashboard' ? 'bg-brand-500/10 text-brand-500' : 'text-slate-600 dark:text-slate-400'" class="w-full flex items-center p-3 rounded-xl transition-all">Dashboard</button>
+            <button @click="activeTab = 'tasks'; if(window.innerWidth < 1024) sidebarOpen = false" :class="activeTab === 'tasks' ? 'bg-brand-500/10 text-brand-500' : 'text-slate-600 dark:text-slate-400'" class="w-full flex items-center p-3 rounded-xl transition-all">Tasks</button>
+            <button @click="activeTab = 'billing'; if(window.innerWidth < 1024) sidebarOpen = false" :class="activeTab === 'billing' ? 'bg-brand-500/10 text-brand-500' : 'text-slate-600 dark:text-slate-400'" class="w-full flex items-center p-3 rounded-xl transition-all">Billing</button>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
+            <button onclick="window.location.href='login.html'" @click="localStorage.clear()" class="w-full flex items-center p-3 text-red-500 rounded-xl font-semibold text-sm hover:bg-red-50 dark:hover:bg-red-500/10">Logout</button>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+     <header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="flex items-center gap-4">
+        <button @click="sidebarOpen = true" class="lg:hidden p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <h1 class="text-xl font-semibold">Hello,User!</h1>
+    </div>
+
+    <div class="flex items-center gap-3">
+        <button @click="toggleDark()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all" title="Toggle Theme">
+            <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+            <svg x-show="dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
+            </svg>
+        </button>
+
+        <button @click="toggleDir()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all text-xs font-bold uppercase tracking-wider w-12" title="Toggle Direction">
+            <span x-text="dir"></span>
+        </button>
+
+        <button class="relative p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+        </button>
+
+        <div class="w-9 h-9 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-lg">SK</div>
+    </div>
+</header>
+
+        <div class="flex-1 overflow-y-auto p-4 md:p-10">
+            <div x-show="activeTab === 'dashboard'" class="space-y-6 md:space-y-8 animate-in fade-in duration-500">
+    
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <template x-for="stat in [{l:'Active Tasks',v:'12'},{l:'Response',v:'2h'},{l:'Status',v:'Healthy'},{l:'Invoice',v:'Jun 01'}]">
+            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <p class="text-[10px] uppercase font-bold text-slate-400" x-text="stat.l"></p>
+                <h3 class="text-2xl md:text-3xl font-bold mt-1" x-text="stat.v"></h3>
+            </div>
+        </template>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        
+        <div class="xl:col-span-2 p-6 md:p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h2 class="text-lg md:text-xl font-bold mb-4">Post New Request</h2>
+            <textarea class="w-full p-4 h-40 rounded-xl bg-slate-50 dark:bg-slate-800 text-sm md:text-base border border-slate-200 dark:border-slate-700" placeholder="Describe your requirements..."></textarea>
+            <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                <button class="px-8 py-4 bg-brand-500 text-white font-bold rounded-xl text-sm md:text-base w-full sm:w-auto">Post Request</button>
+                <button class="px-8 py-4 bg-slate-100 dark:bg-slate-800 font-bold rounded-xl text-sm md:text-base w-full sm:w-auto">Attach Files</button>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold mb-4 text-sm">Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl text-xs font-bold hover:bg-brand-500/10">View Reports</button>
+                    <button class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl text-xs font-bold hover:bg-brand-500/10">Contact Team</button>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold mb-4 text-sm">Today's Progress</h3>
+                <div class="relative pt-1">
+                    <div class="flex mb-2 items-center justify-between">
+                        <span class="text-xs font-bold text-brand-500">75% Completed</span>
+                    </div>
+                    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-slate-100 dark:bg-slate-800">
+                        <div style="width:75%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-brand-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div x-show="activeTab === 'tasks'" class="space-y-6 animate-in fade-in duration-500">
+    
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h2 class="text-2xl font-bold">Task History</h2>
+        <div class="flex w-full sm:w-auto gap-2">
+            <input type="text" placeholder="Search tasks..." class="w-full sm:w-48 px-4 py-2 text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-brand-500 outline-none">
+            <button class="px-4 py-2 bg-brand-500 text-white text-sm font-bold rounded-xl shadow-lg">Filter</button>
+        </div>
+    </div>
+
+    <div class="space-y-3">
+        <template x-for="task in [
+            { name: 'Website Audit', status: 'Completed', priority: 'High', team: 'Design', deadline: 'May 20' },
+            { name: 'Email Campaign', status: 'In Progress', priority: 'Medium', team: 'Marketing', deadline: 'May 25' },
+            { name: 'Data Entry - Q2', status: 'Completed', priority: 'Low', team: 'Operations', deadline: 'May 18' },
+            { name: 'Social Media Strategy', status: 'Pending', priority: 'High', team: 'Marketing', deadline: 'May 28' },
+            { name: 'Client Onboarding', status: 'Completed', priority: 'Medium', team: 'Sales', deadline: 'May 15' }
+        ]" :key="task.name">
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 items-center p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500/30 transition-all">
+                
+                <div class="col-span-2 md:col-span-2">
+                    <p class="font-bold text-sm" x-text="task.name"></p>
+                    <p class="text-[10px] text-slate-500" x-text="'Team: ' + task.team"></p>
+                </div>
+
+                <div class="hidden md:block text-center">
+                    <span class="text-[10px] font-bold uppercase px-2 py-1 rounded-md"
+                          :class="task.priority === 'High' ? 'bg-red-500/10 text-red-500' : 'bg-slate-100 dark:bg-slate-800'">
+                        <span x-text="task.priority"></span>
+                    </span>
+                </div>
+
+                <div class="hidden md:block text-center text-xs text-slate-500" x-text="task.deadline"></div>
+
+                <div class="text-right">
+                    <span class="text-[10px] font-bold uppercase px-3 py-1 rounded-full"
+                          :class="task.status === 'Completed' ? 'bg-green-500/10 text-green-500' : 
+                                  task.status === 'In Progress' ? 'bg-blue-500/10 text-blue-500' : 'bg-amber-500/10 text-amber-500'" 
+                          x-text="task.status">
+                    </span>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+           <div x-show="activeTab === 'billing'" class="space-y-6 md:space-y-8 animate-in fade-in duration-500">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <div class="p-6 md:p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h2 class="text-lg md:text-xl font-bold mb-4">Subscription</h2>
+            <div class="p-5 md:p-6 bg-slate-50 dark:bg-slate-800 rounded-2xl mb-6">
+                <p class="text-base md:text-lg font-bold text-brand-500">Enterprise Growth Plan</p>
+                <p class="text-sm md:text-base">Billed Monthly • <span class="font-bold">$499.00/mo</span></p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <p class="text-xs font-semibold uppercase text-slate-500">Active - Renews June 01, 2026</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button class="px-6 py-3 bg-brand-500 text-white font-bold rounded-xl text-sm w-full sm:w-auto">Upgrade Plan</button>
+                <button class="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold rounded-xl text-sm w-full sm:w-auto">Manage Subscription</button>
+            </div>
+        </div>
+
+        <div class="p-6 md:p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h2 class="text-lg md:text-xl font-bold mb-6">Payment Method</h2>
+            <div class="flex items-center gap-4 p-4 border border-slate-200 dark:border-slate-700 rounded-2xl mb-4">
+                <div class="w-12 h-8 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center font-bold text-xs border border-slate-200">VISA</div>
+                <div>
+                    <p class="text-sm font-bold">Visa ending in 4242</p>
+                    <p class="text-xs text-slate-500">Expires 12/2028</p>
+                </div>
+                <button class="ml-auto text-xs font-bold text-brand-500 hover:underline">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 md:p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <h2 class="text-lg md:text-xl font-bold mb-6">Invoice History</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">
+                        <th class="pb-4">Date</th>
+                        <th class="pb-4">Invoice #</th>
+                        <th class="pb-4">Status</th>
+                        <th class="pb-4 text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm font-semibold">
+                    <template x-for="inv in [
+                        { date: 'May 01, 2026', id: '#INV-8823', status: 'Paid', amt: '$499.00' },
+                        { date: 'Apr 01, 2026', id: '#INV-8712', status: 'Paid', amt: '$499.00' }
+                    ]">
+                        <tr class="border-b border-slate-100 dark:border-slate-800 last:border-0">
+                            <td class="py-4" x-text="inv.date"></td>
+                            <td class="py-4 text-slate-500" x-text="inv.id"></td>
+                            <td class="py-4">
+                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase">Paid</span>
+                            </td>
+                            <td class="py-4 text-right" x-text="inv.amt"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

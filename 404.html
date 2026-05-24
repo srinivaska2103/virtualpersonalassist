@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html 
+    x-data="{ 
+        darkMode: localStorage.getItem('theme') === 'dark',
+        isRtl: localStorage.getItem('direction') === 'rtl',
+        toggleTheme() {
+            this.darkMode = !this.darkMode;
+            localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+        },
+        toggleDirection() {
+            this.isRtl = !this.isRtl;
+            localStorage.setItem('direction', this.isRtl ? 'rtl' : 'ltr');
+        }
+    }"
+    :class="{ 'dark': darkMode }"
+    :dir="isRtl ? 'rtl' : 'ltr'"
+    lang="en"
+    class="h-full transition-colors duration-300"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236366f1' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>">
+    <title>404 &mdash; Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            100: '#e1e7ff',
+                            500: '#4f46e5', /* Core Unique Accent Color */
+                            600: '#4338ca',
+                            700: '#3730a3',
+                            900: '#1e1b4b',
+                        }
+                    },
+                    screens: { 'xs': '360px' }
+                }
+            }
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between p-4 transition-colors duration-300 antialiased font-sans relative overflow-x-hidden">
+
+    <!-- Ambient Grid Backdrop Lights -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[30%] left-[50%] -translate-x-1/2 w-[350px] h-[350px] xs:w-[500px] xs:h-[500px] bg-brand-500/[0.04] dark:bg-brand-500/[0.02] rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- UTILITY HEADER CONTROLLERS -->
+    <header class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-7xl mx-auto flex items-center justify-between h-16 select-none relative z-10">
+        <a href="index.html" class="flex items-center space-x-2 font-semibold text-xl tracking-tight text-brand-500 dark:text-brand-500">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span>TaskVibe</span>
+            </a>
+
+        <!-- System Accessibility Toggles -->
+        <div class="flex items-center gap-2 relative z-50">
+            <button @click="toggleTheme()" type="button" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 hover:border-brand-500/20 transition-all focus:outline-none shadow-sm">
+                <svg x-show="darkMode" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+                <svg x-show="!darkMode" x-cloak class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+            <button @click="toggleDirection()" type="button" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 hover:border-brand-500/30 dark:hover:border-brand-400/30 shadow-sm transition-all focus:outline-none" x-text="isRtl ? 'LTR' : 'RTL'"></button>
+        </div>
+    </header>
+
+    <!-- CENTERED CONTENT SEGMENT ARCHITECTURE -->
+    <main class="w-full max-w-xl mx-auto my-auto py-12 px-4 text-center relative z-10 select-none">
+        
+        <!-- Big Textured Numerical 404 Header String (Weights 400-600 Only) -->
+        <div class="relative inline-block mb-4">
+            <h1 class="text-7xl xs:text-8xl sm:text-9xl font-semibold tracking-tighter text-brand-500/15 dark:text-brand-500/10 select-none tabular-nums">
+                404
+            </h1>
+            
+        </div>
+
+        <!-- Descriptive Copy Content Stack -->
+        <div class="space-y-4 max-w-md mx-auto">
+            <h2 class="text-xl xs:text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
+                Operational Node Missing
+            </h2>
+            <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                The pipeline matrix route you are seeking has been re-indexed, moved, or deleted from our back-office operational directory files.
+            </p>
+        </div>
+
+        <!-- QUICK REDIRECT NAV PATH BUTTON STRIP -->
+        <div class="mt-10 flex flex-col xs:flex-row items-center justify-center gap-3 w-full max-w-xs xs:max-w-none mx-auto">
+            <!-- Core Back Home Route Button -->
+            <a 
+                href="index.html" 
+                class="w-full xs:w-auto px-6 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-medium text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-500/10 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center focus:outline-none"
+            >
+                Return to Workspace
+            </a>
+            
+            <!-- Secondary Context Support Route Button -->
+            <a 
+                href="signup.html" 
+                class="w-full xs:w-auto px-6 py-3.5 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 font-medium text-xs sm:text-sm rounded-xl border border-slate-200 dark:border-slate-800 hover:border-brand-500/30 dark:hover:border-brand-400/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center focus:outline-none shadow-sm"
+            >
+                Report Pipeline Exception
+            </a>
+        </div>
+
+    </main>
+
+    <!-- SECURE COMPLIANCE BASE FOOTER -->
+    <footer class="w-full text-center text-[11px] text-slate-400 dark:text-slate-500 font-normal py-3 select-none relative z-10">
+        &copy; 2026 TaskVibe Operations Inc. Isolated Node Architecture.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html 
+    x-data="{ 
+        darkMode: localStorage.getItem('theme') === 'dark',
+        isRtl: localStorage.getItem('direction') === 'rtl',
+        toggleTheme() {
+            this.darkMode = !this.darkMode;
+            localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+        },
+        toggleDirection() {
+            this.isRtl = !this.isRtl;
+            localStorage.setItem('direction', this.isRtl ? 'rtl' : 'ltr');
+        }
+    }"
+    :class="{ 'dark': darkMode }"
+    :dir="isRtl ? 'rtl' : 'ltr'"
+    lang="en"
+    class="h-full transition-colors duration-300"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236366f1' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>">
+    <title>Schedule Your Operations Briefing &mdash; TaskVibe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                           50: '#f0f3ff',
+                            100: '#e1e7ff',
+                            500: '#4f46e5', /* Core Unique Accent Color */
+                            600: '#4338ca',
+                            700: '#3730a3',
+                            900: '#1e1b4b',
+                        }
+                    },
+                    screens: { 'xs': '360px' }
+                }
+            }
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between p-4 transition-colors duration-300 antialiased font-sans relative overflow-x-hidden">
+
+    <!-- Ambient Grid Backdrop Mesh Glows -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[50%] -translate-x-1/2 w-[350px] h-[350px] xs:w-[500px] xs:h-[500px] bg-brand-500/[0.04] dark:bg-brand-500/[0.02] rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- UTILITY HEADER CONTROLLERS -->
+   <!-- FAR TOP EDGE NAV HEADER BAR -->
+<header class="w-full max-w-7xl mx-auto flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8 select-none relative z-50">
+    
+    <!-- Far Top-Left Corner Branding Redirect Link with Custom Vibe Check Icon -->
+     <a href="index.html" class="flex items-center space-x-2 font-semibold text-xl tracking-tight text-brand-500">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span>TaskVibe</span>
+                    </a>
+
+    <!-- Far Top-Right Corner Accessibility Customization Toggle Buttons -->
+    <div class="flex items-center gap-2 relative z-50">
+        <!-- Dark/Light Theme Button Interface -->
+        <button 
+            @click="toggleTheme()" 
+            type="button" 
+            class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 hover:border-brand-500/20 transition-all focus:outline-none shadow-sm" 
+            title="Toggle Theme"
+        >
+            <svg x-show="darkMode" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+            <svg x-show="!darkMode" x-cloak class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        
+        <!-- Text Direction orientation Button -->
+        <button 
+            @click="toggleDirection()" 
+            type="button" 
+            class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 hover:border-brand-500/30 dark:hover:border-brand-400/30 shadow-sm transition-all focus:outline-none" 
+            x-text="isRtl ? 'LTR' : 'RTL'" 
+            title="Toggle Reading Direction"
+        ></button>
+    </div>
+
+</header>
+
+    <!-- MAIN CENTRALIZED MULTI-STEP BOOKING SANDBOX CARD -->
+    <main class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl mx-auto my-auto py-6 relative z-10">
+        <div 
+            x-data="{
+                step: 1,
+                selectedDate: '',
+                selectedTime: '',
+                clientName: '',
+                clientEmail: '',
+                clientScope: '',
+                availableDays: [
+                    { dayName: 'Mon', dateNum: '25', fullDate: '2026-05-25' },
+                    { dayName: 'Tue', dateNum: '26', fullDate: '2026-05-26' },
+                    { dayName: 'Wed', dateNum: '27', fullDate: '2026-05-27' },
+                    { dayName: 'Thu', dateNum: '28', fullDate: '2026-05-28' },
+                    { dayName: 'Fri', dateNum: '29', fullDate: '2026-05-29' }
+                ],
+                timeSlots: ['09:00 AM', '11:00 AM', '02:00 PM', '04:00 PM']
+            }"
+            class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-5 xs:p-8 md:p-10 shadow-xl shadow-slate-100/40 dark:shadow-none transition-colors duration-300"
+        >
+            <!-- Core Process Flow Header Tracker -->
+            <div class="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800/80 mb-6 select-none">
+                <div class="text-left">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-brand-500" x-text="'Step ' + step + ' of 3'"></span>
+                    <h1 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-white mt-0.5" 
+                        x-text="step === 1 ? 'Select Briefing Date' : (step === 2 ? 'Select Operational Window' : 'Corporate Validation')">
+                    </h1>
+                </div>
+                <!-- Dynamic Horizontal Visual Tracker Pipeline -->
+                <div class="flex items-center gap-1">
+                    <span class="h-1.5 rounded-full transition-all duration-300" :class="step >= 1 ? 'w-6 bg-brand-500' : 'w-2 bg-slate-200 dark:bg-slate-800'"></span>
+                    <span class="h-1.5 rounded-full transition-all duration-300" :class="step >= 2 ? 'w-6 bg-brand-500' : 'w-2 bg-slate-200 dark:bg-slate-800'"></span>
+                    <span class="h-1.5 rounded-full transition-all duration-300" :class="step >= 3 ? 'w-6 bg-brand-500' : 'w-2 bg-slate-200 dark:bg-slate-800'"></span>
+                </div>
+            </div>
+
+            <!-- STEP 1 VIEWPORT: DYNAMIC CALENDAR SLIDER CALENDAR -->
+            <div x-show="step === 1" x-transition class="space-y-6">
+                <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed text-left">
+                    Choose an available day within our operational block framework to schedule your 15-minute remote automation capacity consultation.
+                </p>
+                <div class="grid grid-cols-5 gap-2 w-full select-none">
+                    <template x-for="(day, index) in availableDays" :key="index">
+                        <button 
+                            @click="selectedDate = day.fullDate"
+                            type="button"
+                            class="p-3 rounded-2xl border text-center transition-all focus:outline-none flex flex-col justify-center items-center gap-1"
+                            :class="selectedDate === day.fullDate 
+                                ? 'bg-brand-500 border-brand-500 text-white shadow-md shadow-brand-500/10' 
+                                : 'bg-slate-50/50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200'"
+                        >
+                            <span class="text-[10px] uppercase font-semibold tracking-wider text-slate-400 dark:text-slate-500 transition-colors" :class="selectedDate === day.fullDate ? 'text-brand-100' : ''" x-text="day.dayName"></span>
+                            <span class="text-lg font-semibold tracking-tight tabular-nums" x-text="day.dateNum"></span>
+                        </button>
+                    </template>
+                </div>
+                <div class="pt-4 flex justify-end">
+                    <button @click="step = 2" type="button" :disabled="!selectedDate" class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium text-xs xs:text-sm shadow-md shadow-brand-500/10 transition-all focus:outline-none">
+                        Continue to Windows
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2 VIEWPORT: OPERATIONAL INTERVAL SLOTS PICKER -->
+            <div x-show="step === 2" x-transition class="space-y-6" x-cloak>
+                <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed text-left">
+                    Select a localized turnaround interval block window. Timings are locked precisely down to real-time sync availability.
+                </p>
+                <div class="grid grid-cols-2 gap-3 w-full select-none">
+                    <template x-for="(slot, index) in timeSlots" :key="index">
+                        <button 
+                            @click="selectedTime = slot"
+                            type="button"
+                            class="p-4 rounded-xl border text-left font-medium text-xs xs:text-sm transition-all focus:outline-none flex items-center justify-between group"
+                            :class="selectedTime === slot 
+                                ? 'bg-brand-500 border-brand-500 text-white shadow-md' 
+                                : 'bg-slate-50/50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200'"
+                        >
+                            <span class="tabular-nums font-semibold" x-text="slot"></span>
+                            <div class="w-4 h-4 rounded-full border flex items-center justify-center flex-shrink-0 transition-colors" :class="selectedTime === slot ? 'border-white bg-white text-brand-500' : 'border-slate-300 dark:border-slate-700'">
+                                <div x-show="selectedTime === slot" class="w-1.5 h-1.5 rounded-full bg-brand-500"></div>
+                            </div>
+                        </button>
+                    </template>
+                </div>
+                <div class="pt-4 flex justify-between select-none">
+                    <button @click="step = 1" type="button" class="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium text-xs xs:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none">Back</button>
+                    <button @click="step = 3" type="button" :disabled="!selectedTime" class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium text-xs xs:text-sm shadow-md shadow-brand-500/10 transition-all focus:outline-none">Continue to Details</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 VIEWPORT: CLIENT PROFILE FORM VERIFICATION -->
+            <div x-show="step === 3" x-transition class="space-y-5 text-left" x-cloak>
+                <div class="space-y-1">
+                    <label for="book-name" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Full Name</label>
+                    <input id="book-name" type="text" x-model="clientName" required placeholder="John Doe" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 dark:focus:border-brand-500 rounded-xl text-xs xs:text-sm font-normal focus:outline-none transition-all placeholder-slate-400 dark:placeholder-slate-600 shadow-inner" />
+                </div>
+                <div class="space-y-1">
+                    <label for="book-email" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Corporate Email</label>
+                    <input id="book-email" type="email" x-model="clientEmail" required placeholder="you@agency.com" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 dark:focus:border-brand-500 rounded-xl text-xs xs:text-sm font-normal focus:outline-none transition-all placeholder-slate-400 dark:placeholder-slate-600 shadow-inner" />
+                </div>
+                <div class="space-y-1">
+                    <label for="book-scope" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Operational Bottleneck Notes</label>
+                    <textarea id="book-scope" x-model="clientScope" rows="3" placeholder="Briefly specify inbox, schedule, or CRM systems overhead..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 dark:focus:border-brand-500 rounded-xl text-xs xs:text-sm font-normal focus:outline-none transition-all placeholder-slate-400 dark:placeholder-slate-600 shadow-inner resize-none"></textarea>
+                </div>
+
+                <!-- OVERALL RESERVATION SUMMARY PREVIEW BLOCK -->
+                <div class="p-4 bg-brand-500/5 border border-brand-500/10 rounded-2xl space-y-2 select-none">
+                    <h4 class="text-[11px] font-semibold uppercase tracking-wider text-brand-500">Briefing Summary Manifest</h4>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600 dark:text-slate-400 font-normal">
+                        <div class="flex items-center gap-1.5 tabular-nums">
+                            <svg class="w-3.5 h-3.5 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span x-text="selectedDate"></span>
+                        </div>
+                        <div class="flex items-center gap-1.5 tabular-nums">
+                            <svg class="w-3.5 h-3.5 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span x-text="selectedTime"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-between select-none">
+                    <button @click="step = 2" type="button" class="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium text-xs xs:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none">Back</button>
+                    <button @click="step = 1; alert('Briefing Confirmed! Operational sync invites have been dispatched.')" type="submit" :disabled="!clientName.trim() || !clientEmail.trim()" class="px-6 py-3.5 bg-brand-500 hover:bg-brand-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium text-xs xs:text-sm rounded-xl shadow-lg shadow-brand-500/10 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center focus:outline-none">
+                        Confirm Appointment
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- COMPLIANCE STAMP BASE FOOTER -->
+    <footer class="w-full text-center text-[11px] text-slate-400 dark:text-slate-500 font-normal py-3 select-none relative z-10">
+        &copy; 2026 TaskVibe Operations Inc. Encrypted Sync Pipelines.
+    </footer>
+
+</body>
+</html>
