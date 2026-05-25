@@ -236,22 +236,27 @@
                class="block px-3 py-2 text-sm font-medium rounded-lg">User Profile</a>
         </div>
     </div>
-
-    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col space-y-3">
-        <button @click="toggleDirection(); mobileMenuOpen = false;" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
-            <span>Layout Direction</span>
-            <span class="font-semibold text-brand-500" x-text="isLtr ? 'Set RTL' : 'Set LTR'"></span>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col space-y-3">
+    <!-- Row for Toggles -->
+    <div class="grid grid-cols-2 gap-3">
+        <button @click="$store.globalTheme.toggle()" class="flex items-center justify-center p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
+            <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
         </button>
         
-        <!-- Theme Toggle Row Element -->
-        <button @click="$store.globalTheme.toggle()" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
-            <span>Interface Mode</span>
-            <span class="font-semibold text-brand-500 uppercase" x-text="$store.globalTheme.current"></span>
+        <button @click="toggleDirection()" class="flex items-center justify-center p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-bold tracking-wider uppercase" title="Toggle Text Direction">
+            <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
         </button>
-        
-        <a href="login.html" class="w-full text-center py-2.5 rounded-xl font-medium text-sky-700 dark:text-sky-300 bg-sky-50 hover:bg-sky-100 dark:bg-sky-950/40 dark:hover:bg-sky-900/40 border border-sky-100 dark:border-sky-900/50 transition-colors block">Login</a>
-        <a href="booknow.html" class="w-full text-center py-2.5 rounded-xl font-medium text-white bg-brand-500 hover:bg-brand-600 shadow-md">Book Now</a>
     </div>
+
+    <!-- Action Links -->
+    <a href="login.html" class="w-full text-center py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+        Login
+    </a>
+    <a href="booknow.html" class="w-full text-center py-3 rounded-xl font-semibold text-white bg-brand-500 hover:bg-brand-600 shadow-md transition-all">
+        Book Now
+    </a>
+</div>
 </div>
     </header>
 
@@ -303,9 +308,11 @@
                 </h1>
                 
                 <!-- Subheading Narrative Element (High contrast text weight over image) -->
-                <p class="text-sm xs:text-base md:text-lg lg:text-xl text-slate-800 dark:text-slate-200 font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)] dark:drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                    From calendar management and email handling to customer support and data entry — we help you save time and stay organized.
-                </p>
+                <p class="text-sm xs:text-base md:text-lg lg:text-xl 
+          text-slate-950 dark:text-white 
+          font-medium leading-relaxed max-w-3xl mx-auto">
+    From calendar management and email handling to customer support and data entry — we help you save time and stay organized.
+</p>
             </div>
 
             <!-- Primary Actions Grid Strip / Buttons (Interactive Hover State Transitions) -->
@@ -1282,8 +1289,12 @@
                 >
                     <span>Annually</span>
                     <!-- Flashy Incentive Percentage Sticker Tag -->
-                    <span class="text-[9px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded-md uppercase tracking-normal" :class="billingCycle === 'annual' ? 'bg-white/20 text-white border-transparent' : ''">Save 20%</span>
-                </button>
+<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-wide border transition-colors duration-300"
+      :class="billingCycle === 'annual' 
+        ? 'bg-emerald-600 text-white border-emerald-500' 
+        : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'">
+    Save 20%
+</span>                </button>
             </div>
         </div>
 
@@ -1385,8 +1396,8 @@
         testimonials: [
             {
                 quote: 'TaskVibe completely re-engineered our operational velocity. I reclaimed roughly 18 hours every single week by delegating calendar routing and initial CRM sorting to our assistant pod.',
-                author: 'Srinivas K A',
-                role: 'CEO & Founder, Vexa Tech',
+                author: 'Janani',
+                role: 'CEO & Founder',
                 avatar: 'assets/t1',
                 category: 'founders',
                 metric: '18h Saved / Week'
@@ -1411,7 +1422,7 @@
                 quote: 'Our dedicated virtual assistant handles customer support queues during off-hours flawlessly. Scaling up our monthly plan hours is effortless during peak quarters.',
                 author: 'Elena Rostova',
                 role: 'VP of Growth, Core Logistics',
-                avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80',
+                avatar: 'assets/t2',
                 category: 'operators',
                 metric: '24/7 Queue Coverage'
             }
@@ -1439,9 +1450,9 @@
         
         <!-- Section Header Area & Interactive Category Filters -->
         <div class="max-w-3xl mx-auto text-center mb-12 xs:mb-16">
-            <span class="text-xs font-semibold uppercase tracking-widest text-brand-500 dark:text-brand-400 bg-brand-500/10 dark:bg-brand-500/20 px-4 py-1.5 rounded-full inline-block mb-4">
-                Client Validation
-            </span>
+           <span class="text-xs font-semibold uppercase tracking-widest text-brand-500 dark:text-brand-400 bg-brand-500/10 dark:bg-brand-500/20 px-4 py-1.5 rounded-full inline-block mt-4 mb-4">
+    Client Validation
+</span>
             <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
                 Trusted by Forward-Thinking Leaders
             </h2>

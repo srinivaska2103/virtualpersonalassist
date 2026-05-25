@@ -42,38 +42,39 @@
     </aside>
 
     <main class="flex-1 flex flex-col h-full overflow-hidden">
-     <header class="flex justify-between items-center px-6 py-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-    <div class="flex items-center gap-4">
+     <header class="flex justify-between items-center px-4 py-3 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <!-- Left: Menu & Greeting -->
+    <div class="flex items-center gap-2 overflow-hidden">
         <button @click="sidebarOpen = true" class="lg:hidden p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
         </button>
-        <h1 class="text-xl font-semibold">Hello,User!</h1>
+        <!-- Truncate text so it doesn't break layout on 360px -->
+        <h1 class="text-sm xs:text-base md:text-xl font-semibold truncate">Hello, Srinivas!</h1>
     </div>
 
-    <div class="flex items-center gap-3">
-        <button @click="toggleDark()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all" title="Toggle Theme">
-            <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-            </svg>
-            <svg x-show="dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
-            </svg>
+    <!-- Right: Actions -->
+    <div class="flex items-center gap-2">
+        <!-- Theme Toggle -->
+        <button @click="toggleDark()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all">
+            <svg x-show="!dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            <svg x-show="dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
         </button>
 
-        <button @click="toggleDir()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all text-xs font-bold uppercase tracking-wider w-12" title="Toggle Direction">
+        <!-- Direction Toggle (Hidden on mobile to save space) -->
+        <button @click="toggleDir()" class="hidden xs:block p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all text-[10px] font-bold w-10">
             <span x-text="dir"></span>
         </button>
 
+        <!-- Notification -->
         <button class="relative p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-            </svg>
-            <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            <span class="absolute top-2 right-2 w-1.5 h-1.5 bg-red-500 rounded-full border border-white dark:border-slate-900"></span>
         </button>
 
-        <div class="w-9 h-9 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-lg">SK</div>
+        <!-- Avatar -->
+        <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-xs shadow-lg ml-1">SK</div>
     </div>
 </header>
 

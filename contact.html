@@ -102,7 +102,7 @@
     class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col"
 >
 
-    <!-- HEADER / NAVIGATION -->
+      <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -236,22 +236,27 @@
                class="block px-3 py-2 text-sm font-medium rounded-lg">User Profile</a>
         </div>
     </div>
-
-    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col space-y-3">
-        <button @click="toggleDirection(); mobileMenuOpen = false;" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
-            <span>Layout Direction</span>
-            <span class="font-semibold text-brand-500" x-text="isLtr ? 'Set RTL' : 'Set LTR'"></span>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col space-y-3">
+    <!-- Row for Toggles -->
+    <div class="grid grid-cols-2 gap-3">
+        <button @click="$store.globalTheme.toggle()" class="flex items-center justify-center p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
+            <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
         </button>
         
-        <!-- Theme Toggle Row Element -->
-        <button @click="$store.globalTheme.toggle()" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
-            <span>Interface Mode</span>
-            <span class="font-semibold text-brand-500 uppercase" x-text="$store.globalTheme.current"></span>
+        <button @click="toggleDirection()" class="flex items-center justify-center p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-bold tracking-wider uppercase" title="Toggle Text Direction">
+            <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
         </button>
-        
-        <a href="login.html" class="w-full text-center py-2.5 rounded-xl font-medium text-sky-700 dark:text-sky-300 bg-sky-50 hover:bg-sky-100 dark:bg-sky-950/40 dark:hover:bg-sky-900/40 border border-sky-100 dark:border-sky-900/50 transition-colors block">Login</a>
-        <a href="booknow.html" class="w-full text-center py-2.5 rounded-xl font-medium text-white bg-brand-500 hover:bg-brand-600 shadow-md">Book Now</a>
     </div>
+
+    <!-- Action Links -->
+    <a href="login.html" class="w-full text-center py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+        Login
+    </a>
+    <a href="booknow.html" class="w-full text-center py-3 rounded-xl font-semibold text-white bg-brand-500 hover:bg-brand-600 shadow-md transition-all">
+        Book Now
+    </a>
+</div>
 </div>
     </header>
 
@@ -286,56 +291,53 @@
         
         <!-- Info Cards Grid Matrix -->
         <!-- Responsive Strategy: 1 col on 360px mobile, 2 col on tablet, 3 col on large desktop screens -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-            
-            <!-- Card 1: Corporate HQ Location -->
-            <div class="bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 xs:p-6 flex items-start gap-4 shadow-sm group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all duration-300">
-                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <div class="space-y-1 text-left">
-                    <h3 class="text-sm font-semibold text-slate-900 dark:text-white">Corporate Head Office</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
-                        Task visible,<br>Madurai, Tamil Nadu, India
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 2: Strategic Communications Email -->
-            <div class="bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 xs:p-6 flex items-start gap-4 shadow-sm group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all duration-300">
-                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </div>
-                <div class="space-y-1 text-left">
-                    <h3 class="text-sm font-semibold text-slate-900 dark:text-white">Email Communications</h3>
-                    <p class="text-xs text-slate-400 font-normal leading-relaxed">
-                        <span class="block text-slate-500 dark:text-slate-400">General Support:</span>
-                        <a href="mailto:support@taskvibe.com" class="text-brand-500 dark:text-brand-400 hover:underline">support@taskvibe.com</a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 3: Global Execution Time Availability -->
-            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 xs:p-5 flex items-start gap-4 shadow-sm group hover:border-brand-500/30 transition-all duration-300 w-full max-w-[360px] mx-auto md:max-w-none">
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
     
-    <!-- Icon Container -->
-    <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex items-start gap-4 shadow-sm group hover:border-brand-500/30 transition-all duration-300">
+        <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        </div>
+        <div class="space-y-1 text-left">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-white">Corporate Head Office</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                TaskVibe,<br>Madurai, Tamil Nadu, India
+            </p>
+        </div>
     </div>
 
-    <!-- Content -->
-    <div class="space-y-0.5 text-left">
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Operational Windows</h3>
-        <p class="text-[11px] xs:text-xs text-slate-500 dark:text-slate-400 font-medium leading-relaxed tabular-nums">
-            Monday &mdash; Friday<br>
-            09:00 AM &mdash; 06:00 PM IST
-        </p>
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex items-start gap-4 shadow-sm group hover:border-brand-500/30 transition-all duration-300">
+        <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+        </div>
+        <div class="space-y-1 text-left">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-white">Email Support</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
+                <a href="mailto:support@taskvibe.com" class="text-brand-500 hover:underline">support@taskvibe.com</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm group hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row items-center gap-4 md:col-span-2 lg:col-span-1">
+        
+        <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+        </div>
+        
+        <div class="space-y-0.5 text-left">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-white">Operational Hours</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed tabular-nums">
+                Mon &mdash; Fri | 09:00 AM &mdash; 06:00 PM IST
+            </p>
+        </div>
     </div>
 </div>
-
-        </div>
     </div>
 </section>
 <!-- INTERACTIVE CONTACT FORM SECTION -->
