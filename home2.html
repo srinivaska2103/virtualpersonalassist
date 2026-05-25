@@ -102,7 +102,7 @@
     class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col"
 >
 
-      <!-- HEADER / NAVIGATION -->
+    <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -175,7 +175,15 @@
                 </button>
 
                 <!-- CTA Action Links -->
-<a href="login.html" class="px-5 py-2.5 text-sm font-medium text-sky-700 dark:text-sky-300 bg-sky-50 hover:bg-sky-100 dark:bg-sky-950/40 dark:hover:bg-sky-900/40 rounded-xl transition-colors">Login</a>
+                <a href="login.html" 
+   class="px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 
+          bg-slate-100 hover:bg-slate-200 
+          dark:bg-slate-800 dark:hover:bg-slate-700 
+          border border-slate-200 dark:border-slate-700 
+          rounded-xl shadow-sm shadow-slate-200/50 dark:shadow-none 
+          transition-all transform hover:-translate-y-0.5">
+    Login
+</a>
                 <a href="booknow.html" class="px-5 py-2.5 text-sm font-medium text-white bg-brand-500 hover:bg-brand-600 rounded-xl shadow-md shadow-brand-500/10 transition-all transform hover:-translate-y-0.5">Book Now</a>
             </div>
 
@@ -446,10 +454,7 @@
             </div>
         </div>
 
-        <!-- Icons Bar remains unchanged for structural consistency -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center border-t border-slate-200 dark:border-slate-800 pt-12">
-            <!-- Icons... -->
-        </div>
+       
     </div>
 </section>
 
@@ -910,8 +915,12 @@
                 >
                     <span>Annually</span>
                     <!-- Flashy Incentive Percentage Sticker Tag -->
-                    <span class="text-[9px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded-md uppercase tracking-normal" :class="billingCycle === 'annual' ? 'bg-white/20 text-white border-transparent' : ''">Save 20%</span>
-                </button>
+<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-wide border transition-colors duration-300"
+      :class="billingCycle === 'annual' 
+        ? 'bg-emerald-600 text-white border-emerald-500' 
+        : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'">
+    Save 20%
+</span>                </button>
             </div>
         </div>
 
@@ -1005,46 +1014,47 @@
     </div>
 </section>
 <!-- FINAL CALL-TO-ACTION SECTION (LIGHT THEME) -->
-<section class="relative py-20 lg:py-28 overflow-hidden transition-colors duration-300 bg-slate-50 dark:bg-slate-950">
-    
-    <!-- Decorative Abstract Background Elements -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-40 pointer-events-none z-0">
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
-    </div>
+<section class="relative py-24 px-6 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <!-- Grid Pattern Background for visual interest -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#6366f1 1px, transparent 1px); background-size: 32px 32px;"></div>
 
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Main Bento Container -->
+        <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[3rem] p-8 md:p-16 shadow-2xl shadow-blue-500/5 overflow-hidden">
+            
+            <!-- Abstract Floating Element -->
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Area -->
+                <div class="text-center md:text-left space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Ready to <br/><span class="text-blue-600">Delegate & Grow?</span>
+                    </h2>
+                    <p class="text-slate-500 dark:text-slate-400 font-normal leading-relaxed text-lg">
+                        Stop juggling tasks. Get reliable virtual assistant services tailored to your specific goals.
+                    </p>
+                </div>
+
+                <!-- Action Area -->
+                <div class="flex flex-col gap-4">
+                    <a href="signup.html" class="group relative px-8 py-5 bg-blue-600 text-white font-semibold text-sm rounded-2xl transition-all hover:bg-blue-700 active:scale-95 text-center shadow-lg shadow-blue-600/20 overflow-hidden">
+                        <span class="relative z-10">Start Your Free Trial</span>
+                        <!-- Subtle shine effect on hover -->
+                        <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    </a>
+                    
+                    <a href="contact.html" class="px-8 py-5 bg-transparent text-slate-700 dark:text-white font-semibold text-sm rounded-2xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center">
+                        Schedule a Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
         
-        <!-- Headline & Subhead Stack -->
-        <div class="space-y-6 max-w-2xl mx-auto">
-            <h2 class="text-3xl xs:text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
-                Ready to Delegate & Grow?
-            </h2>
-            <p class="text-sm xs:text-base md:text-lg text-slate-500 dark:text-slate-400 font-normal leading-relaxed">
-                Get reliable virtual assistant services tailored to your business goals. Our team is ready to scale your operations instantly.
-            </p>
-        </div>
-
-        <!-- Interactive CTA Button Strip -->
-        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            
-            <!-- Primary Action -->
-            <a 
-                href="signup.html" 
-                class="w-full sm:w-auto px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm rounded-xl shadow-lg shadow-brand-500/20 transition-all transform hover:-translate-y-0.5 active:scale-95 text-center focus:outline-none focus:ring-4 focus:ring-brand-500/20"
-            >
-                Start Today
-            </a>
-            
-            <!-- Secondary Action -->
-            <a 
-                href="contact.html" 
-                class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-900 text-slate-700 dark:text-white font-semibold text-sm rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all transform hover:-translate-y-0.5 active:scale-95 text-center focus:outline-none focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-800"
-            >
-                Contact Our Team
-            </a>
-            
-        </div>
+        <!-- Trust Signal Footer -->
+        <p class="mt-8 text-xs text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] font-semibold">
+            No long-term contracts. Start in 24 hours.
+        </p>
     </div>
 </section>
   <!-- FOOTER STRUCTURE -->
