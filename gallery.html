@@ -164,28 +164,35 @@
 </nav>
 
             <!-- Utility Functional Buttons (Desktop) -->
-            <div class="hidden lg:flex items-center space-x-4">
-                <!-- Accessibility Theme Toggle Controls -->
-                <button @click="$store.globalTheme.toggle()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
-                    <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
-                </button>
-                <button @click="toggleDirection()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
-                    <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
-                </button>
+           <div class="hidden lg:flex items-center space-x-4">
+    <!-- Accessibility Theme Toggle Controls -->
+    <button @click="$store.globalTheme.toggle()" class="p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
+        <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+    </button>
+    
+    <button @click="toggleDirection()" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
+        <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
+    </button>
 
-                <!-- CTA Action Links -->
-                <a href="login.html" 
-   class="px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 
-          bg-slate-100 hover:bg-slate-200 
-          dark:bg-slate-800 dark:hover:bg-slate-700 
-          border border-slate-200 dark:border-slate-700 
-          rounded-xl shadow-sm shadow-slate-200/50 dark:shadow-none 
-          transition-all transform hover:-translate-y-0.5">
-    Login
-</a>
-                <a href="booknow.html" class="px-5 py-2.5 text-sm font-medium text-white bg-brand-500 hover:bg-brand-600 rounded-xl shadow-md shadow-brand-500/10 transition-all transform hover:-translate-y-0.5">Book Now</a>
-            </div>
+    <!-- CTA Action Links: Standardized height and width -->
+    <a href="login.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-slate-800 dark:text-slate-200 
+              bg-slate-100 hover:bg-slate-200 
+              dark:bg-slate-800 dark:hover:bg-slate-700 
+              border border-slate-200 dark:border-slate-700 
+              rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+        Login
+    </a>
+    
+    <a href="booknow.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-white 
+              bg-brand-500 hover:bg-brand-600 
+              rounded-xl shadow-md shadow-brand-500/10 
+              transition-all transform hover:-translate-y-0.5">
+        Book Now
+    </a>
+</div>
 
             <!-- Mobile & Tablet Menu Interactive Trigger (< 1024px) -->
             <div class="flex items-center space-x-3 lg:hidden">

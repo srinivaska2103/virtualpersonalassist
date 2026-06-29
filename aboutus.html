@@ -164,28 +164,35 @@
 </nav>
 
             <!-- Utility Functional Buttons (Desktop) -->
-            <div class="hidden lg:flex items-center space-x-4">
-                <!-- Accessibility Theme Toggle Controls -->
-                <button @click="$store.globalTheme.toggle()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
-                    <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
-                </button>
-                <button @click="toggleDirection()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
-                    <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
-                </button>
+          <div class="hidden lg:flex items-center space-x-4">
+    <!-- Accessibility Theme Toggle Controls -->
+    <button @click="$store.globalTheme.toggle()" class="p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
+        <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+    </button>
+    
+    <button @click="toggleDirection()" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
+        <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
+    </button>
 
-                <!-- CTA Action Links -->
-                <a href="login.html" 
-   class="px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 
-          bg-slate-100 hover:bg-slate-200 
-          dark:bg-slate-800 dark:hover:bg-slate-700 
-          border border-slate-200 dark:border-slate-700 
-          rounded-xl shadow-sm shadow-slate-200/50 dark:shadow-none 
-          transition-all transform hover:-translate-y-0.5">
-    Login
-</a>
-                <a href="booknow.html" class="px-5 py-2.5 text-sm font-medium text-white bg-brand-500 hover:bg-brand-600 rounded-xl shadow-md shadow-brand-500/10 transition-all transform hover:-translate-y-0.5">Book Now</a>
-            </div>
+    <!-- CTA Action Links: Standardized height and width -->
+    <a href="login.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-slate-800 dark:text-slate-200 
+              bg-slate-100 hover:bg-slate-200 
+              dark:bg-slate-800 dark:hover:bg-slate-700 
+              border border-slate-200 dark:border-slate-700 
+              rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+        Login
+    </a>
+    
+    <a href="booknow.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-white 
+              bg-brand-500 hover:bg-brand-600 
+              rounded-xl shadow-md shadow-brand-500/10 
+              transition-all transform hover:-translate-y-0.5">
+        Book Now
+    </a>
+</div>
 
             <!-- Mobile & Tablet Menu Interactive Trigger (< 1024px) -->
             <div class="flex items-center space-x-3 lg:hidden">
@@ -419,34 +426,39 @@
         
         <!-- Header -->
         <div class="text-center mb-16 select-none">
-            <span class="text-xs font-semibold uppercase tracking-widest text-brand-500 dark:text-brand-400 bg-brand-500/10 dark:bg-brand-500/20 px-4 py-1.5 rounded-full inline-block mb-4">
-                Core Value Proposition
+            <span class="text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-blue-600/10 dark:bg-blue-600/20 px-4 py-1.5 rounded-full inline-block mb-4">
+                Our Core Value Proposition
             </span>
             <h2 class="text-2xl xs:text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
-                Why Choose Us
+                Why Partners Choose Virtual Personal Assistant
             </h2>
+            <p class="mt-6 text-slate-500 dark:text-slate-400 font-normal max-w-xl mx-auto">
+                We blend professional expertise with modern agility to ensure your operations are not just supported, but optimized for growth.
+            </p>
         </div>
 
         <!-- Responsive Interaction Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <template x-for="feature in [
-                { title: 'Experienced Virtual Assistants', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
-                { title: 'Flexible Service Plans', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-                { title: 'Affordable Remote Support', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
-                { title: 'Fast Communication', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
-                { title: 'Secure & Confidential Handling', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-                { title: 'Personalized Business Solutions', icon: 'M11 3.055A9.005 9.005 0 002.094 11.334L5 14l2-2h3l2 2 2.5-2.5M11 3.055A9.005 9.005 0 0119.906 11.334L17 14l-2-2h-3l-2 2-2.5-2.5' }
+                { title: 'Experienced Assistants', desc: 'Hand-picked professionals with a proven track record in complex operational support.', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
+                { title: 'Flexible Scaling', desc: 'Adjust your support capacity instantly as your business demands evolve.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+                { title: 'Cost Efficiency', desc: 'High-impact support services designed to minimize overhead and maximize ROI.', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+                { title: 'Real-Time Updates', desc: 'Stay connected with transparent, lightning-fast communication protocols.', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
+                { title: 'Data Confidentiality', desc: 'Enterprise-grade security protocols ensuring your sensitive data remains protected.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+                { title: 'Tailored Strategy', desc: 'Custom workflows built around your unique business objectives and tech stack.', icon: 'M11 3.055A9.005 9.005 0 002.094 11.334L5 14l2-2h3l2 2 2.5-2.5M11 3.055A9.005 9.005 0 0119.906 11.334L17 14l-2-2h-3l-2 2-2.5-2.5' }
             ]" :key="feature.title">
                 
                 <!-- Card -->
-                <div class="group relative bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl transition-all duration-300 hover:border-brand-500/30 hover:shadow-xl hover:shadow-brand-500/5 cursor-pointer">
+                <div class="group bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 cursor-pointer">
                     <!-- Icon -->
-                    <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-600/10 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" :d="feature.icon"></path></svg>
                     </div>
                     <!-- Heading -->
-                    <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors" x-text="feature.title"></h3>
+                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors mb-3" x-text="feature.title"></h3>
+                    <!-- Description -->
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed" x-text="feature.desc"></p>
                 </div>
             </template>
         </div>
@@ -591,7 +603,7 @@
 <section 
     x-data="{ 
         inView: false,
-        count1: 0, count2: 0, count3: 0,
+        count1: 100, count2: 100, count3: 100,
         targets: { t1: 85, t2: 4, t3: 99 },
         animateStats() {
             if (this.inView) return;
@@ -626,7 +638,7 @@
             </h2>
             <div class="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
             <p class="mt-8 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-xl leading-relaxed font-normal">
-                Vexa Tech transforms scattered workflows into a unified engine of growth, reliability, and precision.
+               Virtual Personal transforms scattered workflows into a unified engine of growth, reliability, and precision.
             </p>
         </div>
 

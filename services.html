@@ -165,27 +165,34 @@
 
             <!-- Utility Functional Buttons (Desktop) -->
             <div class="hidden lg:flex items-center space-x-4">
-                <!-- Accessibility Theme Toggle Controls -->
-                <button @click="$store.globalTheme.toggle()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
-                    <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
-                </button>
-                <button @click="toggleDirection()" class="p-2 text-slate-500 hover:text-brand-500 rounded-lg bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
-                    <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
-                </button>
+    <!-- Accessibility Theme Toggle Controls -->
+    <button @click="$store.globalTheme.toggle()" class="p-2.5 text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors" title="Toggle Theme">
+        <svg x-show="$store.globalTheme.current === 'light'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <svg x-show="$store.globalTheme.current === 'dark'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 4.343l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path></svg>
+    </button>
+    
+    <button @click="toggleDirection()" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-brand-500 rounded-xl bg-slate-100 dark:bg-slate-800 transition-colors text-xs font-semibold tracking-wider" title="Toggle Text Direction">
+        <span x-text="isLtr ? 'RTL' : 'LTR'"></span>
+    </button>
 
-                <!-- CTA Action Links -->
-                <a href="login.html" 
-   class="px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 
-          bg-slate-100 hover:bg-slate-200 
-          dark:bg-slate-800 dark:hover:bg-slate-700 
-          border border-slate-200 dark:border-slate-700 
-          rounded-xl shadow-sm shadow-slate-200/50 dark:shadow-none 
-          transition-all transform hover:-translate-y-0.5">
-    Login
-</a>
-                <a href="booknow.html" class="px-5 py-2.5 text-sm font-medium text-white bg-brand-500 hover:bg-brand-600 rounded-xl shadow-md shadow-brand-500/10 transition-all transform hover:-translate-y-0.5">Book Now</a>
-            </div>
+    <!-- CTA Action Links: Standardized height and width -->
+    <a href="login.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-slate-800 dark:text-slate-200 
+              bg-slate-100 hover:bg-slate-200 
+              dark:bg-slate-800 dark:hover:bg-slate-700 
+              border border-slate-200 dark:border-slate-700 
+              rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+        Login
+    </a>
+    
+    <a href="booknow.html" 
+       class="w-28 py-2.5 text-sm font-semibold text-center text-white 
+              bg-brand-500 hover:bg-brand-600 
+              rounded-xl shadow-md shadow-brand-500/10 
+              transition-all transform hover:-translate-y-0.5">
+        Book Now
+    </a>
+</div>
 
             <!-- Mobile & Tablet Menu Interactive Trigger (< 1024px) -->
             <div class="flex items-center space-x-3 lg:hidden">
@@ -316,7 +323,7 @@
                 Core Capabilities
             </span>
             <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
-                What We Can Handle For You
+                Our Services
             </h2>
             <p class="mt-4 text-sm xs:text-base text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-2xl mx-auto">
                 Outsource your operational bottlenecks to our elite administrative specialists and reclaim your executive focus.
@@ -330,7 +337,7 @@
             <!-- Card 1: Email Management -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/Email Management" alt="Email Management" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i1" alt="Email Management" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent dark:from-slate-800 dark:via-slate-800/20 z-10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-20 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -348,7 +355,7 @@
             <!-- Card 2: Calendar Scheduling -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/Calendar Scheduling" alt="Calendar Scheduling" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i2" alt="Calendar Scheduling" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent dark:from-slate-800 dark:via-slate-800/20 z-10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-20 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -366,7 +373,7 @@
             <!-- Card 3: Customer Support -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/Customer Support" alt="Customer Support" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i4" alt="Customer Support" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent dark:from-slate-800 dark:via-slate-800/10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-10 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -384,7 +391,7 @@
             <!-- Card 4: Data Entry -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/dataentry" alt="Data Entry" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i3" alt="Data Entry" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent dark:from-slate-800 dark:via-slate-800/10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-10 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -402,7 +409,7 @@
             <!-- Card 5: Social Media Assistance -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/socialmedia1" alt="Social Media Assistance" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i5" alt="Social Media Assistance" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent dark:from-slate-800 dark:via-slate-800/10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-10 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -420,7 +427,7 @@
             <!-- Card 6: Travel Planning -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/travel" alt="Travel Planning" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i6" alt="Travel Planning" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent dark:from-slate-800 dark:via-slate-800/10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-10 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -456,7 +463,7 @@
             <!-- Card 8: Invoice & Billing Support -->
             <div class="group relative rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-500/40 dark:hover:border-brand-500/40 transition-all duration-300 flex flex-col min-h-[390px]">
                 <div class="h-44 overflow-hidden relative bg-slate-200 dark:bg-slate-950">
-                    <img src="assets/invoice" alt="Invoice & Billing Support" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
+                    <img src="assets/i8" alt="Invoice & Billing Support" class="w-full h-full object-cover grayscale opacity-75 dark:opacity-50 blur-[0.5px] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:opacity-90 group-hover:blur-0 transition-all duration-500 ease-out" />
                     <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent dark:from-slate-800 dark:via-slate-800/10"></div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col justify-between relative z-10 -mt-8 bg-white dark:bg-slate-800 rounded-t-2xl">
@@ -547,115 +554,53 @@
 
     </div>
 </section>
-<!-- HOW IT WORKS SECTION -->
-<section 
-    id="how-it-works"
-    class="relative bg-white dark:bg-slate-950 py-16 xs:py-20 md:py-24 lg:py-32 transition-colors duration-300 border-b border-slate-200/60 dark:border-slate-800/60"
->
-    <!-- Background Gradient Ambient Glows -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-[30%] left-[50%] -translate-x-1/2 w-[300px] h-[300px] xs:w-[500px] xs:h-[500px] bg-brand-500/[0.02] rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+<section id="how-it-works" class="relative bg-slate-50 dark:bg-slate-950 py-24 lg:py-32 overflow-hidden transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
         
-        <!-- Section Header Area -->
-        <div class="max-w-3xl mx-auto text-center mb-16 xs:mb-20 md:mb-24">
-            <span class="text-xs font-semibold uppercase tracking-widest text-brand-500 dark:text-brand-400 bg-brand-500/10 dark:bg-brand-500/20 px-4 py-1.5 rounded-full inline-block mb-4">
-                Seamless Onboarding
+        <!-- Header -->
+        <div class="text-center mb-24">
+            <span class="inline-block py-1.5 px-5 rounded-full bg-blue-600/10 text-blue-600 font-semibold text-xs uppercase tracking-[0.2em] mb-6">
+                Operational Excellence
             </span>
-            <h2 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight">
-                Simple &amp; Efficient Process
+            <h2 class="text-4xl md:text-6xl font-semibold text-slate-900 dark:text-white tracking-tight mb-6">
+                Your Path to Scale
             </h2>
-            <p class="mt-4 text-sm xs:text-base text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-2xl mx-auto">
-                Get paired with your dedicated virtual assistant in six simple operational milestones and optimize your schedule instantly.
+            <p class="text-slate-500 dark:text-slate-400 text-lg max-w-xl mx-auto font-normal">
+                A streamlined, six-step journey designed to integrate seamlessly into your existing business architecture.
             </p>
         </div>
 
-        <!-- TIMELINE STEPS MATRIX GRID (6 Steps Implementation) -->
-        <!-- Responsive breakframe layout: 1 col on 360px mobile, 2 col on sm tablets, 3 col on md layouts & widescreen desktops -->
-        <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-x-8 lg:gap-y-16 w-full">
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Desktop Tracking Connection Lines (Only Visible >= 1024px Grid Layout Viewports) -->
-           
+            <!-- Step Array -->
+            <template x-for="(step, index) in [
+                { title: 'Book Consultation', desc: 'Schedule a 15-minute discovery session to align your business goals.', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z' },
+                { title: 'Discuss Requirements', desc: 'Define your specific operational bottlenecks and target toolsets.', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z' },
+                { title: 'Select Support Plan', desc: 'Pick the tier that matches your current growth trajectory.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+                { title: 'Start Delegation', desc: 'Begin offloading your prioritized task lists to your new assistant.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+                { title: 'Monitor Performance', desc: 'Track progress and output quality via your real-time dashboard.', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+                { title: 'Ongoing Support', desc: 'Continuous optimization of your management workflows.', icon: 'M13 17h8m0 0V9m0 8l-8-8-4 4-6-6' }
+            ]" :key="index">
+                
+                <div class="relative group p-8 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
+                    <!-- Step Number -->
+                    <div class="text-blue-600 font-bold text-lg mb-6 opacity-50" x-text="'0' + (index + 1)"></div>
+                    
+                    <!-- Icon -->
+                    <div class="w-12 h-12 mb-6 text-blue-600">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" :d="step.icon"></path></svg>
+                    </div>
 
-            <!-- Step Node 1 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <!-- Icon Hub Wrapper with Interactive Scale Transition -->
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:border-brand-500/50 group-hover:bg-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    <!-- Floating Step Count Badge -->
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">01</span>
+                    <!-- Text -->
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-3" x-text="step.title"></h3>
+                    <p class="text-slate-500 dark:text-slate-400 font-normal leading-relaxed text-sm" x-text="step.desc"></p>
+                    
+                    <!-- Hover Accent -->
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]"></div>
                 </div>
-                <!-- Content Meta Column Stack -->
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Book a Consultation</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">Schedule a free 15-minute introductory session via our calendar application to map out structural operational log goals.</p>
-                </div>
-            </div>
-
-            <!-- Step Node 2 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:border-brand-500/5 group-hover:bg-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">02</span>
-                </div>
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Discuss Requirements</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">We outline your routine bottlenecks, system constraints, preferred tech tools, and task run-book guidelines.</p>
-                </div>
-            </div>
-
-            <!-- Step Node 3 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:border-brand-500/5 group-hover:bg-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">03</span>
-                </div>
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Choose a Support Plan</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">Select a predictable tiered package built explicitly around your weekly or monthly operational scale parameters.</p>
-                </div>
-            </div>
-
-            <!-- Step Node 4 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:border-brand-500/5 group-hover:bg-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">04</span>
-                </div>
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Start Delegating Tasks</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">Hand over your priority action lists, shared inbox metrics, or file processing pipelines through your designated channel.</p>
-                </div>
-            </div>
-
-            <!-- Step Node 5 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:bg-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">05</span>
-                </div>
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Track Performance Logs</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">Monitor execution speeds, logged system hours, and weekly diagnostic outputs via your real-time pipeline interface.</p>
-                </div>
-            </div>
-
-            <!-- Step Node 6 -->
-            <div class="group relative flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 z-10">
-                <div class="w-20 h-20 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 flex items-center justify-center text-brand-500 shadow-sm transition-all duration-300 transform group-hover:scale-105 group-hover:border-brand-500/5 group-hover:shadow-md relative">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
-                    <span class="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500 text-[11px] font-semibold text-white tracking-wide shadow-sm">06</span>
-                </div>
-                <div class="space-y-2 max-w-xs mx-auto lg:mx-0">
-                    <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">Receive Ongoing Assistance</h3>
-                    <p class="text-xs xs:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed">Enjoy premium management workflows with daily progress reporting templates and automated loop reviews.</p>
-                </div>
-            </div>
-
+            </template>
         </div>
-
     </div>
 </section>
 <!-- SAAS PRICING TIER SECTION -->
